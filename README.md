@@ -10,3 +10,11 @@ We want to create an application for hospital management. It should have the fol
 4. For every problem there will be medication / treatment. For one problem there are can be mutliple treatment and medication.
 5. A medication / treatment will have name , description( 3 times in day)
 6. Hospital have staffs which are Nurses , doctors  and  ward boys.
+
+## HMS
+Currently HMS has code that showcases :-
+- [x] Private
+- [x] Public
+- [x] Protected
+- [x] Internal
+- [x] Inheritance of a class.
