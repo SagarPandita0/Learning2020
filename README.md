@@ -22,3 +22,6 @@ Currently HMS has code that showcases :-
 ## BoxUnbox
 * Boxing[Stack -> Heap] and Unboxing[Heap -> Stack] are computationally expensive processes. When a value type is boxed, a new object must be allocated and constructed. To a lesser degree, the cast required for unboxing is also expensive computationally. 
 * Use **Generics** to avoid this performance issue altogether!
+
+## Delegates
+* Here I showed declaration, instantiation, and use of a delegate that can be used to reference method[Adding Number here] that take an integer parameter and returns an integer value.
