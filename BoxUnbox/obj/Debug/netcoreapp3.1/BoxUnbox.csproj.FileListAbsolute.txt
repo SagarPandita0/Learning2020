@@ -1,0 +1,13 @@
+C:\Users\SagarPandita\source\repos\BoxUnbox\bin\Debug\netcoreapp3.1\BoxUnbox.exe
+C:\Users\SagarPandita\source\repos\BoxUnbox\bin\Debug\netcoreapp3.1\BoxUnbox.deps.json
+C:\Users\SagarPandita\source\repos\BoxUnbox\bin\Debug\netcoreapp3.1\BoxUnbox.runtimeconfig.json
+C:\Users\SagarPandita\source\repos\BoxUnbox\bin\Debug\netcoreapp3.1\BoxUnbox.runtimeconfig.dev.json
+C:\Users\SagarPandita\source\repos\BoxUnbox\bin\Debug\netcoreapp3.1\BoxUnbox.dll
+C:\Users\SagarPandita\source\repos\BoxUnbox\bin\Debug\netcoreapp3.1\BoxUnbox.pdb
+C:\Users\SagarPandita\source\repos\BoxUnbox\obj\Debug\netcoreapp3.1\BoxUnbox.csprojAssemblyReference.cache
+C:\Users\SagarPandita\source\repos\BoxUnbox\obj\Debug\netcoreapp3.1\BoxUnbox.AssemblyInfoInputs.cache
+C:\Users\SagarPandita\source\repos\BoxUnbox\obj\Debug\netcoreapp3.1\BoxUnbox.AssemblyInfo.cs
+C:\Users\SagarPandita\source\repos\BoxUnbox\obj\Debug\netcoreapp3.1\BoxUnbox.csproj.CoreCompileInputs.cache
+C:\Users\SagarPandita\source\repos\BoxUnbox\obj\Debug\netcoreapp3.1\BoxUnbox.dll
+C:\Users\SagarPandita\source\repos\BoxUnbox\obj\Debug\netcoreapp3.1\BoxUnbox.pdb
+C:\Users\SagarPandita\source\repos\BoxUnbox\obj\Debug\netcoreapp3.1\BoxUnbox.genruntimeconfig.cache
