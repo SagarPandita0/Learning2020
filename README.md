@@ -20,8 +20,13 @@ Currently HMS has code that showcases :-
 - [x] Inheritance of a class.
 
 ## BoxUnbox
-* Boxing[Stack -> Heap] and Unboxing[Heap -> Stack] are computationally expensive processes. When a value type is boxed, a new object must be allocated and constructed. To a lesser degree, the cast required for unboxing is also expensive computationally. 
+* Boxing[Stack -> Heap] and Unboxing[Heap -> Stack] are computationally expensive processes. When a value type is boxed, a new object must be allocated and           constructed. To a lesser degree, the cast required for unboxing is also expensive computationally. 
 * Use **Generics** to avoid this performance issue altogether!
 
 ## Delegates
-* Here I showed declaration, instantiation, and use of a delegate that can be used to reference method[Adding Number here] that take an integer parameter and returns an integer value.
+* Here I showed declaration, instantiation, and use of a delegate that can be used to reference method[Adding Number here] that take an integer parameter and         returns an integer value.
+
+## UserDefinedExceptions
+* Here we learn that there are 2 types of Exceptions, Standard and Custom.
+* Standard ones have lots of restrictions in terms of what all errors can be displayed to the user.
+* User defined Exceptions circumvent the restrictions of standard class. Here we have the flexibility to output any type of custom message to the user, making the     whole UX/UI better.
