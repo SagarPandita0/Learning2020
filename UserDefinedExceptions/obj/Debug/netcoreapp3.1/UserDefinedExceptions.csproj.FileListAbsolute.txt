@@ -1,0 +1,13 @@
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\bin\Debug\netcoreapp3.1\UserDefinedExceptions.exe
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\bin\Debug\netcoreapp3.1\UserDefinedExceptions.deps.json
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\bin\Debug\netcoreapp3.1\UserDefinedExceptions.runtimeconfig.json
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\bin\Debug\netcoreapp3.1\UserDefinedExceptions.runtimeconfig.dev.json
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\bin\Debug\netcoreapp3.1\UserDefinedExceptions.dll
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\bin\Debug\netcoreapp3.1\UserDefinedExceptions.pdb
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\obj\Debug\netcoreapp3.1\UserDefinedExceptions.csprojAssemblyReference.cache
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\obj\Debug\netcoreapp3.1\UserDefinedExceptions.AssemblyInfoInputs.cache
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\obj\Debug\netcoreapp3.1\UserDefinedExceptions.AssemblyInfo.cs
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\obj\Debug\netcoreapp3.1\UserDefinedExceptions.csproj.CoreCompileInputs.cache
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\obj\Debug\netcoreapp3.1\UserDefinedExceptions.dll
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\obj\Debug\netcoreapp3.1\UserDefinedExceptions.pdb
+C:\Users\SagarPandita\source\repos\UserDefinedExceptions\obj\Debug\netcoreapp3.1\UserDefinedExceptions.genruntimeconfig.cache
