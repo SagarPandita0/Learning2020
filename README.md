@@ -4,17 +4,19 @@
 
 We want to create an application for hospital management. It should have the follow features :-
 
-1. Patient comes for treatment. Patient has to give his name , Address, phone number and What problem he had. Name , Phonenumber are compulsory fields.
+1. Patient comes for treatment. Patient has to give his name , Address, phone number and What problem he had. Name , Phonnumber are compulsory fields.
 2. Every patient can have allergies. System should have the ability to put allergy name , small description and number of years he has this allergy.
 2. Patient can have multiple problems. So like a patient can have fever , cough .While entering problem system should have ability to put problem description ,        number of days he has this problem 
-3. Patient is allocated to doctor who gives him treatments.At a time only one patient is allocated to the doctor.
-4. For every problem there will be medication. For one problem there are can be mutliple treatment and medication.
+3. Patient is allocated to doctor who gives him treatments.At any time only one Patient will be allocated to a doctor.
+4. For every problem there will be medications. For one problem there are can be mutliple treatment and medication.
 5. A medication / treatment will have name , description( 3 times in day)
 6. Hospital have staffs which are Nurses , doctors  and  ward boys.
 7. All staff should have name , joining date and department.
 8. Doctor has Name , education like he is MD MS . 
-9. Nurse works under doctors and Every nurse takes help of only 1 Ward boy.
-7. Patient can be attended by Multiple Nurses and Ward boys but Only Patient.
+9. Nurse works under doctors and Every nurse is assigned only 1 Ward boy and not more than that.
+10. Patient can be attended by Multiple Nurses and Ward boys but treated by only one Doctor.
+
+Create patient model with the above features and validation and ability to print report which will print all patient details.
 
 
 ## HMS
