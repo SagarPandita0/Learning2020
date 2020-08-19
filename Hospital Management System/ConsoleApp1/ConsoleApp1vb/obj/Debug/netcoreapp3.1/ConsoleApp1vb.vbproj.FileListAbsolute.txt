@@ -1,0 +1,13 @@
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\bin\Debug\netcoreapp3.1\ConsoleApp1vb.exe
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\bin\Debug\netcoreapp3.1\ConsoleApp1vb.deps.json
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\bin\Debug\netcoreapp3.1\ConsoleApp1vb.runtimeconfig.json
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\bin\Debug\netcoreapp3.1\ConsoleApp1vb.runtimeconfig.dev.json
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\bin\Debug\netcoreapp3.1\ConsoleApp1vb.dll
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\bin\Debug\netcoreapp3.1\ConsoleApp1vb.pdb
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\obj\Debug\netcoreapp3.1\ConsoleApp1vb.vbprojAssemblyReference.cache
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\obj\Debug\netcoreapp3.1\ConsoleApp1vb.AssemblyInfoInputs.cache
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\obj\Debug\netcoreapp3.1\ConsoleApp1vb.AssemblyInfo.vb
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\obj\Debug\netcoreapp3.1\ConsoleApp1vb.vbproj.CoreCompileInputs.cache
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\obj\Debug\netcoreapp3.1\ConsoleApp1vb.dll
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\obj\Debug\netcoreapp3.1\ConsoleApp1vb.pdb
+C:\Users\SagarPandita\source\repos\ConsoleApp1\ConsoleApp1vb\obj\Debug\netcoreapp3.1\ConsoleApp1vb.genruntimeconfig.cache

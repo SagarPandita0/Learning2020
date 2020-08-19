@@ -70,20 +70,102 @@ namespace BusinessLayerLogic
         public short age { get; set; }
         public int contact { get; set; }
     }
-   /* public class WardBoy
+    /* public class WardBoy
+     {
+         public string id { get; set; }
+         public short age { get; set; }
+     }*/
+
+    //Patient comes for treatment. Patient has to give his name , Address,
+    //phone number and What problem he had. Name , Phonnumber are compulsory fields
+    /* Every patient can have allergies.System should have the ability to put allergy name , 
+     * small description and 
+     * number of years he has this allergy.[list<String:allgyName,String:descriptn,Integer:noOfYears>]
+     * create your own class to encapsulate those three strings in a meaningful way, then use List<YourNewClass>.
+     
+     *  public class MyCustomClass
     {
-        public string id { get; set; }
-        public short age { get; set; }
-    }*/
+        public string MyString1 { get; set; }
+        public string MyString2 { get; set; }
+        public string MyString3 { get; set; }
+    }
+
+    class MyApp
+    {
+        public MyApp()
+        {
+            List<MyCustomClass> customList = new List<MyCustomClass>();
+            customList.Add(new MyCustomClass
+            {
+                MyString1 = "Hello",
+                MyString2 = "Every",
+                MyString3 = "Body",
+            });
+        }
+    }
+
+     Patient can have multiple problems.So like a patient can have fever , 
+    cough.While entering problem system should have ability to put problem description , 
+    number of days he has this problem[list<String:problem,Integer:noOfDays>]
+     Patient is allocated to doctor who gives him treatments.
+    At any time only one Patient will be allocated to a doctor.
+    [HashMap can be used here-(key:doctor,value:patient)]*/
     public class Patient 
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string  address { get; set; }
-        public short age { get; set; }
-        public int contact { get; set; }
-       public string assignedRoom { get; set; }
-        public string assignedDoctor { get; set; }
+        private string _name;
+        public string name
+        {
+            get { return _name; }
+            set { if (value != null)
+                {
+                    _name = value;
+                }
+            }
+        }
+
+        private string _address;
+
+        public string address
+        {
+            get { return _address; }
+            set { if (value != null)
+                {
+                    _address = value;
+                }
+            }
+        }
+
+        
+        private int _phoneNumber;
+
+        public int phoneNumber
+        {
+            get { return _phoneNumber; }
+            set
+            {
+                try
+                {
+                    int num = value;
+                }
+                catch (ArgumentNullException )
+                {
+                    Console.WriteLine("Enter valid values");
+                } _phoneNumber = value; }
+        }
+
+        private string _problem;
+
+        public string problem
+        {
+            get { return _problem; }
+            set { if (value != null)
+                {
+                    _problem = value;
+                }
+            }
+        }
+
+
     }
     public class Manager
     {
