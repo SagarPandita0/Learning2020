@@ -1,9 +1,0 @@
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\bin\Debug\netcoreapp3.1\BusinessLayerLogic.deps.json
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\bin\Debug\netcoreapp3.1\BusinessLayerLogic.dll
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\bin\Debug\netcoreapp3.1\BusinessLayerLogic.pdb
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\obj\Debug\netcoreapp3.1\BusinessLayerLogic.csprojAssemblyReference.cache
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\obj\Debug\netcoreapp3.1\BusinessLayerLogic.AssemblyInfoInputs.cache
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\obj\Debug\netcoreapp3.1\BusinessLayerLogic.AssemblyInfo.cs
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\obj\Debug\netcoreapp3.1\BusinessLayerLogic.csproj.CoreCompileInputs.cache
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\obj\Debug\netcoreapp3.1\BusinessLayerLogic.dll
-C:\Users\SagarPandita\source\repos\ConsoleApp1\BusinessLayerLogic\obj\Debug\netcoreapp3.1\BusinessLayerLogic.pdb
