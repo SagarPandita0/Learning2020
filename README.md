@@ -26,6 +26,7 @@ Currently HMS has code that showcases :-
 - [x] Protected
 - [x] Internal
 - [x] Inheritance of a class.
+- [x] Abstract Class.
 
 ## BoxUnbox
 * Boxing[Stack -> Heap] and Unboxing[Heap -> Stack] are computationally expensive processes. When a value type is boxed, a new object must be allocated and           constructed. To a lesser degree, the cast required for unboxing is also expensive computationally. 
