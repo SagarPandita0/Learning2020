@@ -9,44 +9,58 @@ namespace ConsoleApp1
     {
           static void Main(String[] args)
         {
-            Doctor d = new Doctor();
-            d.education = "MD MBBS";
-            d.Department = "Surgery";
-            d.Name = "ABC";
-            d.JoiningDate = "12/03/2010";
-            
-            Nurse n = new Nurse();
-            n.Name = "QWERTY";
-            n.JoiningDate = "23/4/2003";
-            n.Department = "Surgery";
+            Console.WriteLine("Hospital System Management");
+            string userInput = "";
 
-            WardBoy wb = new WardBoy();
-            wb.Name = "RTY";
-            Dictionary<string, string> dn = new Dictionary<string, string>();
-
-            dn.Add(d.Name, n.Name);
-           // Console.WriteLine(dt);
-            foreach (var item in dn)
+            // loop until the exit command comes in.
+            while (userInput != "exit")
             {
-                Console.WriteLine("Doctor Name: " + item.Key + " Nurse Name: " + item.Value);
-            }
-            Dictionary<string, string> wn = new Dictionary<string, string>();
-            wn.Add(n.Name, wb.Name);
-            foreach (var item in wn)
-            {
-                Console.WriteLine("Nurse Name: "+item.Key+" WardBoy Name: "+item.Value);
+                // display a prompt
+                Console.Write("> ");
+                // get the input
+                userInput = Console.ReadLine().ToLower();
+
+                // Branch based on the input
+                switch (userInput)
+                {
+                    case "exit":
+                        break;
+
+                    case "help":
+                        {
+                            Console.WriteLine(" Press 1 for Doctor data entry");
+                            Console.WriteLine("Press 2 for Patient data entry ");
+                            Console.WriteLine("Press 3 for Nurse data entry");
+                            Console.WriteLine("Press 4 for WardBoy data entry");
+                            Console.WriteLine("Type \"exit\" to end the program ");
+                            break;
+                        }
+
+                    case "1":
+                        { 
+                            Doctor d = new Doctor();
+                            Console.WriteLine("Doctor Data Entry :");
+                            Console.WriteLine("Enter Doctor Name:");
+                            d.Name = Console.ReadLine();
+                            Console.WriteLine("Enter Doctor's Department:");
+                            d.Department = Console.ReadLine();
+                            Console.WriteLine("Enter Doctor's Joining Date:");
+                            d.JoiningDate = Console.ReadLine();
+                            Console.WriteLine("Enter Doctor's Education:");
+                            d.education = Console.ReadLine();
+                            Console.WriteLine("Doctor details completed !");
+                            break;
+                        }
+                        
+                    
+                    default:
+                        {
+                            Console.WriteLine("\"{0}\" is not a recognized command.  Type \"help\" for options.", userInput);
+                            break;
+                        }
+                }
             }
 
-            Patient p = new Patient();
-            p.name = "Shyam";
-            p.PhoneNumber = "9083477334";
-
-            //foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(d))
-            //{
-            //    string name = descriptor.Name;
-            //    object value = descriptor.GetValue(d);
-            //    Console.WriteLine("{0}={1}", name, value);
-            //}
 
         }
 
