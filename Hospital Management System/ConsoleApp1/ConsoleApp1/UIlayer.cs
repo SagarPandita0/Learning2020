@@ -2,6 +2,7 @@
 using BusinessLayerLogic;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -11,7 +12,9 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Hospital System Management");
             string userInput = "";
-
+            Dictionary<string, string> doctorDept = new Dictionary<string, string>();
+            Dictionary<string, string> nurseDept = new Dictionary<string, string>();
+            Dictionary<string, string> nurseDoct = new Dictionary<string, string>();
             // loop until the exit command comes in.
             while (userInput != "exit")
             {
@@ -19,9 +22,8 @@ namespace ConsoleApp1
                 Console.Write("> ");
                 // get the input
                 userInput = Console.ReadLine().ToLower();
-                Dictionary<string,string> doctorDept = new Dictionary<string,string>();
-                Dictionary<string, string> nurseDept = new Dictionary<string, string>();
                 
+
                 switch (userInput)
                 {
                     case "exit":
@@ -38,51 +40,95 @@ namespace ConsoleApp1
                         }
 
                     case "1":
-                        { 
-                            Doctor d = new Doctor();
-                            Console.WriteLine("Doctor Data Entry :");
-                            Console.WriteLine("Enter Doctor Name:");
-                            d.Name = Console.ReadLine();
-                            Console.WriteLine("Enter Doctor's Department:");
-                            d.Department = Console.ReadLine();
-                            doctorDept.Add(d.Name, d.Department);
-                            Console.WriteLine("Enter Doctor's Joining Date:");
-                            d.JoiningDate = Console.ReadLine();
-                            Console.WriteLine("Enter Doctor's Education:");
-                            d.Education = Console.ReadLine();
-                            Console.WriteLine("Doctor details completed !");
+                        {
+                            try
+                            {
+                                Doctor d = new Doctor();
+                                Console.WriteLine("Doctor Data Entry :");
+                                Console.WriteLine("Enter Doctor Name:");
+                                d.Name = Console.ReadLine();
+                                Console.WriteLine("Enter Doctor's Department:");
+                                d.Department = Console.ReadLine();
+                                doctorDept.Add(d.Department, d.Name);
+                                //Console.WriteLine(doctorDept.Count);
+                                //Console.WriteLine(doctorDept[d.Department]);
+                                Console.WriteLine("Enter Doctor's Joining Date:");
+                                d.JoiningDate = Console.ReadLine();
+                                Console.WriteLine("Enter Doctor's Education:");
+                                d.Education = Console.ReadLine();
+                                Console.WriteLine("Doctor details completed !");
+                            }
+                            catch (Exception e)
+                            {
+
+                                Console.WriteLine(e);
+                            }
+                            
                             break;
                         }
 
                     case "2":
                         {
-                            Patient p = new Patient();
-                            Console.WriteLine("Patient Data Entry :");
-                            Console.WriteLine("Enter Patient Name:");
-                            p.Name = Console.ReadLine();
-                            Console.WriteLine("Enter Patient's Address:");
-                            p.Address = Console.ReadLine();
-                            Console.WriteLine("Enter Patient's PhoneNumber:");
-                            p.PhoneNumber = Console.ReadLine();
-                            Console.WriteLine("Enter Patient's Allergies:");
-                            p.Allergies = Console.ReadLine();
-                            Console.WriteLine("Enter Patient's Ailment");
-                            p.Ailment = Console.ReadLine();
-                            Console.WriteLine("Patient details completed !");
+                            try
+                            {
+                                Patient p = new Patient();
+                                Console.WriteLine("Patient Data Entry :");
+                                Console.WriteLine("Enter Patient Name:");
+                                p.Name = Console.ReadLine();
+                                Console.WriteLine("Enter Patient's Address:");
+                                p.Address = Console.ReadLine();
+                                Console.WriteLine("Enter Patient's PhoneNumber:");
+                                p.PhoneNumber = Console.ReadLine();
+                                Console.WriteLine("Enter Patient's Allergies:");
+                                p.Allergies = Console.ReadLine();
+                                Console.WriteLine("Enter Patient's Ailment");
+                                p.Ailment = Console.ReadLine();
+                                Console.WriteLine("Patient details completed !");
+                            }
+                            catch (Exception e)
+                            {
+
+                                Console.WriteLine(e);
+                            }
+                            
                             break;
                         }
                     case "3":
                         {
-                            Nurse n = new Nurse();
-                            Console.WriteLine("Nurse Data Entry :");
-                            Console.WriteLine("Enter Nurse Name:");
-                            n.Name = Console.ReadLine();
-                            Console.WriteLine("Enter Nurse's Department:");
-                            n.Department = Console.ReadLine();
-                            nurseDept.Add(n.Name,n.Department);
-                            Console.WriteLine("Enter Nurse's Date of Joining:");
-                            n.JoiningDate = Console.ReadLine();
                             
+                            try
+                            {
+                                Nurse n = new Nurse();
+                                Console.WriteLine("Nurse Data Entry :");
+                                Console.WriteLine("Enter Nurse Name:");
+                                n.Name = Console.ReadLine();
+                                Console.WriteLine("Enter Nurse's Department:");
+                                n.Department = Console.ReadLine();
+                                nurseDept.Add(n.Department, n.Name);
+                                Console.WriteLine(nurseDept.Count);
+                                Console.WriteLine("Enter Nurse's Date of Joining:");
+                                n.JoiningDate = Console.ReadLine();
+                                //Console.WriteLine(doctorDept.Count);
+                                foreach (var item in nurseDept.Keys)
+                                {
+                                   // Console.WriteLine("Going in");
+                                   // Console.WriteLine(item);
+                                   // Console.WriteLine(doctorDept[item]);
+                                   // Console.WriteLine(nurseDept[item]);
+                                    if (doctorDept.ContainsKey(item))
+                                    {
+                                      //  Console.WriteLine("Comparison Successful!");
+                                        nurseDoct.Add(nurseDept[item], doctorDept[item]);
+                                    }
+                                }
+                              //  Console.WriteLine(nurseDoct.Count);
+                            }
+                            catch (Exception e)
+                            {
+
+                                Console.WriteLine(e);
+                            }
+                                                     
                             break;
                         }
                     default:
