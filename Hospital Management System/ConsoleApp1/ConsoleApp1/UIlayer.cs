@@ -3,6 +3,7 @@ using BusinessLayerLogic;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace ConsoleApp1
 {
@@ -15,6 +16,10 @@ namespace ConsoleApp1
             Dictionary<string, string> doctorDept = new Dictionary<string, string>();
             Dictionary<string, string> nurseDept = new Dictionary<string, string>();
             Dictionary<string, string> nurseDoct = new Dictionary<string, string>();
+            Dictionary<int, string> patientIndex = new Dictionary<int, string>();
+            List<List<string>> ailment = new List<List<string>>();
+            int c = 0;
+            int k = 0;
             // loop until the exit command comes in.
             while (userInput != "exit")
             {
@@ -74,15 +79,27 @@ namespace ConsoleApp1
                                 Patient p = new Patient();
                                 Console.WriteLine("Patient Data Entry :");
                                 Console.WriteLine("Enter Patient Name:");
-                                p.Name = Console.ReadLine();
+                                p.Name = Console.ReadLine().Trim();
                                 Console.WriteLine("Enter Patient's Address:");
-                                p.Address = Console.ReadLine();
+                                p.Address = Console.ReadLine().Trim();
                                 Console.WriteLine("Enter Patient's PhoneNumber:");
-                                p.PhoneNumber = Console.ReadLine();
+                                p.PhoneNumber = Console.ReadLine().Trim();
                                 Console.WriteLine("Enter Patient's Allergies:");
-                                p.Allergies = Console.ReadLine();
-                                Console.WriteLine("Enter Patient's Ailment");
-                                p.Ailment = Console.ReadLine();
+                                p.Allergies = Console.ReadLine().Trim();
+                                patientIndex.Add(c++,p.Name);
+                                Console.WriteLine("Does the Patient have multiple problems?[YES/NO]");
+                                string ans = Console.ReadLine().ToLower().Trim();
+                                if (ans.Equals("yes"))
+                                {
+                                    Console.WriteLine("Enter the number of problems");
+                                    int x = Int32.Parse(Console.ReadLine().Trim());
+                                    for (int i = 0; i < x; i++)
+                                    {
+                                        Console.WriteLine("Enter Patient's Ailment");
+                                        p.Ailment = Console.ReadLine().Trim();
+                                        ailment[k++].Add(p.Ailment);
+                                    }
+                                }
                                 Console.WriteLine("Patient details completed !");
                             }
                             catch (Exception e)
