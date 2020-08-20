@@ -19,8 +19,9 @@ namespace ConsoleApp1
                 Console.Write("> ");
                 // get the input
                 userInput = Console.ReadLine().ToLower();
-
-                // Branch based on the input
+                Dictionary<string,string> doctorDept = new Dictionary<string,string>();
+                Dictionary<string, string> nurseDept = new Dictionary<string, string>();
+                
                 switch (userInput)
                 {
                     case "exit":
@@ -44,15 +45,46 @@ namespace ConsoleApp1
                             d.Name = Console.ReadLine();
                             Console.WriteLine("Enter Doctor's Department:");
                             d.Department = Console.ReadLine();
+                            doctorDept.Add(d.Name, d.Department);
                             Console.WriteLine("Enter Doctor's Joining Date:");
                             d.JoiningDate = Console.ReadLine();
                             Console.WriteLine("Enter Doctor's Education:");
-                            d.education = Console.ReadLine();
+                            d.Education = Console.ReadLine();
                             Console.WriteLine("Doctor details completed !");
                             break;
                         }
-                        
-                    
+
+                    case "2":
+                        {
+                            Patient p = new Patient();
+                            Console.WriteLine("Patient Data Entry :");
+                            Console.WriteLine("Enter Patient Name:");
+                            p.Name = Console.ReadLine();
+                            Console.WriteLine("Enter Patient's Address:");
+                            p.Address = Console.ReadLine();
+                            Console.WriteLine("Enter Patient's PhoneNumber:");
+                            p.PhoneNumber = Console.ReadLine();
+                            Console.WriteLine("Enter Patient's Allergies:");
+                            p.Allergies = Console.ReadLine();
+                            Console.WriteLine("Enter Patient's Ailment");
+                            p.Ailment = Console.ReadLine();
+                            Console.WriteLine("Patient details completed !");
+                            break;
+                        }
+                    case "3":
+                        {
+                            Nurse n = new Nurse();
+                            Console.WriteLine("Nurse Data Entry :");
+                            Console.WriteLine("Enter Nurse Name:");
+                            n.Name = Console.ReadLine();
+                            Console.WriteLine("Enter Nurse's Department:");
+                            n.Department = Console.ReadLine();
+                            nurseDept.Add(n.Name,n.Department);
+                            Console.WriteLine("Enter Nurse's Date of Joining:");
+                            n.JoiningDate = Console.ReadLine();
+                            
+                            break;
+                        }
                     default:
                         {
                             Console.WriteLine("\"{0}\" is not a recognized command.  Type \"help\" for options.", userInput);
