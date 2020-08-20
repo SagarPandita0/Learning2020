@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace BusinessLayerLogic
 {
-    public class Staff
+    public abstract class Staff
     {
         public string Name;
        public string Department;
       public string JoiningDate;
-        public int EncashSalary { get; set; }
+        public abstract int EncashSalary();
     }
 
     public class Patient
@@ -25,18 +25,18 @@ namespace BusinessLayerLogic
     public class Doctor : Staff
     {
         public string education;
-        public new int EncashSalary() => 100000;
+        public override int EncashSalary() => 100000;
        
     }
 
     public class Nurse : Staff
     {
-        public new int EncashSalary() => 10000;
+        public override int EncashSalary() => 10000;
     }
 
     public class WardBoy : Staff
     {
-        public new int EncashSalary() => 5000;
+        public override int EncashSalary() => 5000;
     }
 
     public class Medication
