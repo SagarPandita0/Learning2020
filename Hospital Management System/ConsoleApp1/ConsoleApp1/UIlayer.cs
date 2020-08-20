@@ -14,7 +14,7 @@ namespace ConsoleApp1
             d.Department = "Surgery";
             d.Name = "ABC";
             d.JoiningDate = "12/03/2010";
-
+            
             Nurse n = new Nurse();
             n.Name = "QWERTY";
             n.JoiningDate = "23/4/2003";
@@ -36,6 +36,11 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Nurse Name: "+item.Key+" WardBoy Name: "+item.Value);
             }
+
+            Patient p = new Patient();
+            p.name = "Shyam";
+            p.PhoneNumber = "9083477334";
+
             //foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(d))
             //{
             //    string name = descriptor.Name;

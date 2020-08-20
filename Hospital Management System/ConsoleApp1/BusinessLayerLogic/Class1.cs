@@ -1,6 +1,8 @@
 ﻿using BusinessLayerLogic;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace BusinessLayerLogic
 {
@@ -14,14 +16,58 @@ namespace BusinessLayerLogic
 
     public class Patient
     {
-        public string Name { get; set; }
+        private string _name;
+
+        public string name
+        {
+            get { return _name; }
+            set { if (value != null) 
+                    {
+                    _name = value; 
+                    }
+                else
+                {
+                    throw new Exception("Enter valid name!");
+                }
+            }
+        }
+
         public string Address { get; set; }
-        public int PhoneNumber { get; set; }
+
+        private string _PhoneNumber;
+
+        public string PhoneNumber
+        {
+            get { return _PhoneNumber; }
+            set
+            {
+                Regex expr = new Regex(@"^[6-9]\d{9}$");
+
+                if (expr.IsMatch(value))
+                {
+                    _PhoneNumber = value;
+                }
+                else
+                {
+                    throw new Exception("Incorrect Number entered");
+                } 
+            }
+        }
+
+
         public string Ailment { get; set; }
         public string Allergies { get; set; }
         public void PrintEverything() { }
-    }
+        public List<Medication> Medications { get; set; }
 
+        
+    }
+    public class Medication
+    {
+        string name;
+        string description;
+        string patientName;
+    }
     public class Doctor : Staff
     {
         public string education;
@@ -39,11 +85,7 @@ namespace BusinessLayerLogic
         public override int EncashSalary() => 5000;
     }
 
-    public class Medication
-    {
-        string name;
-        string description;
-    }
+    
 
 }
 
