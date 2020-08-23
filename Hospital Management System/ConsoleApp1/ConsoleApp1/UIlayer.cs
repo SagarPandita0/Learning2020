@@ -87,12 +87,24 @@ namespace ConsoleApp1
                                     break;
                                 }
                                 Patient p = new Patient(Name);
+                                Allergies a = new Allergies();
                                 Console.WriteLine("Enter Patient's Address:");
                                 p.Address = Console.ReadLine().Trim();
                                 Console.WriteLine("Enter Patient's PhoneNumber:");
                                 p.PhoneNumber = Console.ReadLine().Trim();
-                                Console.WriteLine("Enter Patient's Allergies:");
-                                p.Allergies = Console.ReadLine().Trim();
+                                Console.WriteLine("Enter Patient's Allergy Count:");
+                                int x = Int32.Parse(Console.ReadLine().Trim());
+                                for (int i = 0; i < x; i++)
+                                {
+                                    Console.WriteLine("Enter Patient's Allergy:");
+                                    p.Allergies = Console.ReadLine().Trim();
+                                    Console.WriteLine("Enter Patient's Allergy description:");
+                                    a.description = Console.ReadLine().Trim();
+                                    Console.WriteLine("Enter Patient's Allergy duration in years:");
+                                    a.numOfYears = Int32.Parse(Console.ReadLine().Trim());
+                                    p.PatientAllergies(p.Allergies, a.description, p.Name, a.numOfYears);
+                                }
+                                p.PrintPatientAllergies(p.Name);
                                 patientIndex.Add(c++,p.Name);
                                
                                 Console.WriteLine("Does the Patient have problems?[YES/NO]");
@@ -102,7 +114,7 @@ namespace ConsoleApp1
                                 if (ans.Equals("yes"))
                                 {
                                     Console.WriteLine("Enter the number of problems");
-                                    int x = Int32.Parse(Console.ReadLine().Trim());
+                                    int xx = Int32.Parse(Console.ReadLine().Trim());
                                    
                                     
                                     for (int i = 0; i < x; i++)

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 using System.Collections.Specialized;
+using System.Collections;
+using System.Linq;
+
 namespace BusinessLayerLogic
 {
     public abstract class Staff
@@ -27,11 +30,12 @@ namespace BusinessLayerLogic
     {
         List<Nurse> nlist = new List<Nurse>();
         List<WardBoy> wblist = new List<WardBoy>();
+        static List<Allergies> patientAllergies = new List<Allergies>();
       // static ListWithDuplicates pts = new ListWithDuplicates();
         static NameValueCollection myCol = new NameValueCollection();
         public int id;
         private string _name;
-        bool flag;
+        
         public string PrintTime()
         {   
             return(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"));
@@ -53,6 +57,17 @@ namespace BusinessLayerLogic
             //    // Console.WriteLine(x);
             //}
             Console.WriteLine("Patient History: {0}",myCol[name]);
+        }
+        public void PatientAllergies(string aname,string adescription,string pname, int noy )
+        {
+            
+            patientAllergies.Add(new Allergies { name = aname, description = adescription, patientName = pname, numOfYears = noy });
+        }
+        public void PrintPatientAllergies(string pname) 
+        {
+            IEnumerable<string> languageList = patientAllergies.Select(selector: p => p.name = pname)
+                                                   ;
+            Console.WriteLine(languageList);
         }
 
 
@@ -88,6 +103,15 @@ namespace BusinessLayerLogic
 
         
     }
+    public class Allergies 
+    {
+        public string name;
+        public string description;
+        public int numOfYears;
+        public string patientName;
+
+    }
+
     public class Medication
     {
         string name;
