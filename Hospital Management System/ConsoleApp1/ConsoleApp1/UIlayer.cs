@@ -17,7 +17,7 @@ namespace ConsoleApp1
             Dictionary<string, string> nurseDept = new Dictionary<string, string>();
             Dictionary<string, string> nurseDoct = new Dictionary<string, string>();
             Dictionary<int, string> patientIndex = new Dictionary<int, string>();
-           
+            List<List<string>> patientTimeStamping = new List<List<string>>();
             List<List<string>> ailment = new List<List<string>>();
             int c = 0;
             int k = 0;
@@ -90,12 +90,14 @@ namespace ConsoleApp1
                                 patientIndex.Add(c++,p.Name);
                                 Console.WriteLine("Does the Patient have problems?[YES/NO]");
                                 string ans = Console.ReadLine().ToLower().Trim();
+                                int j = k;
+                                List<string> vs = new List<string>();
                                 if (ans.Equals("yes"))
                                 {
                                     Console.WriteLine("Enter the number of problems");
                                     int x = Int32.Parse(Console.ReadLine().Trim());
-                                    int j = k;
-                                    List<string> vs = new List<string>();
+                                   
+                                    
                                     for (int i = 0; i < x; i++)
                                     {   
                                         Console.WriteLine("Enter Patient's Ailment");
@@ -105,11 +107,15 @@ namespace ConsoleApp1
                                        // ailment[j].Add(p.Ailment);
                                     }
                                     ailment.Add(vs);
+                                    k++;
                                     vs.Clear();
                                 }
                                 
                                 Console.WriteLine("Patient details completed !");
                                 Console.WriteLine(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"));
+                                vs.Add(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"));
+                                patientTimeStamping.Add(vs);//creating history of patient timestamps.
+                                vs.Clear();
                             }
                             catch (Exception e)
                             {
