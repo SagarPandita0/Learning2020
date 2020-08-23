@@ -17,7 +17,7 @@ namespace ConsoleApp1
             Dictionary<string, string> nurseDept = new Dictionary<string, string>();
             Dictionary<string, string> nurseDoct = new Dictionary<string, string>();
             Dictionary<int, string> patientIndex = new Dictionary<int, string>();
-            List<List<string>> patientTimeStamping = new List<List<string>>();
+            
             List<List<string>> ailment = new List<List<string>>();
             int c = 0;
             int k = 0;
@@ -41,7 +41,7 @@ namespace ConsoleApp1
                             Console.WriteLine("Press 2 for Patient data entry ");
                             Console.WriteLine("Press 3 for Nurse data entry");
                             Console.WriteLine("Press 4 for WardBoy data entry");
-                            Console.WriteLine("Type \"exit\" to end the program ");
+                            Console.WriteLine("Type \"exit\" to end the program ");                           
                             break;
                         }
 
@@ -77,10 +77,16 @@ namespace ConsoleApp1
                         {
                             try
                             {
-                                Patient p = new Patient();
                                 Console.WriteLine("Patient Data Entry :");
                                 Console.WriteLine("Enter Patient Name:");
-                                p.Name = Console.ReadLine().Trim();
+                                string Name = null;
+                                Name = Console.ReadLine().Trim();
+                                if (String.IsNullOrEmpty(Name))
+                                {
+                                    Console.WriteLine("Enter Valid Name, Try again!");
+                                    break;
+                                }
+                                Patient p = new Patient(Name);
                                 Console.WriteLine("Enter Patient's Address:");
                                 p.Address = Console.ReadLine().Trim();
                                 Console.WriteLine("Enter Patient's PhoneNumber:");
@@ -88,6 +94,7 @@ namespace ConsoleApp1
                                 Console.WriteLine("Enter Patient's Allergies:");
                                 p.Allergies = Console.ReadLine().Trim();
                                 patientIndex.Add(c++,p.Name);
+                               
                                 Console.WriteLine("Does the Patient have problems?[YES/NO]");
                                 string ans = Console.ReadLine().ToLower().Trim();
                                 int j = k;
@@ -104,18 +111,21 @@ namespace ConsoleApp1
                                         p.Ailment = Console.ReadLine().Trim();
                                        
                                         vs.Add(p.Ailment);
-                                       // ailment[j].Add(p.Ailment);
+                                       
                                     }
                                     ailment.Add(vs);
                                     k++;
                                     vs.Clear();
                                 }
-                                
+                                Console.WriteLine("Do you wish to see Patient history? [YES/NO]");
+                                string z = Console.ReadLine().Trim().ToUpper();
+                                if (z == "YES")
+                                {
+                                    p.PatientHistory(p.Name);
+                                }
                                 Console.WriteLine("Patient details completed !");
                                 Console.WriteLine(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"));
-                                vs.Add(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"));
-                                patientTimeStamping.Add(vs);//creating history of patient timestamps.
-                                vs.Clear();
+                                
                             }
                             catch (Exception e)
                             {
@@ -163,6 +173,11 @@ namespace ConsoleApp1
                                                      
                             break;
                         }
+                    case "4":
+                        {//ward boy.
+                            break;
+                        }
+                    
                     default:
                         {
                             Console.WriteLine("\"{0}\" is not a recognized command.  Type \"help\" for options.", userInput);

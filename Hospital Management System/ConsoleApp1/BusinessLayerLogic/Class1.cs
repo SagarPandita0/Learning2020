@@ -3,34 +3,60 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
-
+using System.Collections.Specialized;
 namespace BusinessLayerLogic
 {
     public abstract class Staff
     {
-        public string Name;
-       public string Department;
-      public string JoiningDate;
+        public string Name { get; set; }
+       public string Department { get; set; }
+      public string JoiningDate { get; set; }
         public abstract int EncashSalary();
     }
 
+    //public class ListWithDuplicates : List<KeyValuePair<string, string>>
+    //{
+    //    public void Add(string key, string value)
+    //    {
+    //        var element = new KeyValuePair<string, string>(key, value);
+    //        this.Add(element);
+    //    }
+        
+    //}
     public class Patient
     {
+        List<Nurse> nlist = new List<Nurse>();
+        List<WardBoy> wblist = new List<WardBoy>();
+      // static ListWithDuplicates pts = new ListWithDuplicates();
+        static NameValueCollection myCol = new NameValueCollection();
+        public int id;
         private string _name;
-
-        public string name
-        {
-            get { return _name; }
-            set { if (value != null) 
-                    {
-                    _name = value; 
-                    }
-                else
-                {
-                    throw new Exception("Enter valid name!");
-                }
-            }
+        bool flag;
+        public string PrintTime()
+        {   
+            return(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"));
         }
+        public Patient(string pName)
+        {
+            this.Name = pName;
+            
+            
+          //  pts.Add(pName,PrintTime());
+            myCol.Add(pName,PrintTime());
+            //Console.WriteLine(PrintTime()); 
+        }
+        public void PatientHistory(string name)
+        {
+            //foreach (var item in pts)
+            //{
+            //    string x = string.Format("{0} entered at {1} ", item.Key, item.Value);
+            //    // Console.WriteLine(x);
+            //}
+            Console.WriteLine("Patient History: {0}",myCol[name]);
+        }
+
+
+        public string Name { get; set; }
 
         public string Address { get; set; }
 
@@ -70,7 +96,15 @@ namespace BusinessLayerLogic
     }
     public class Doctor : Staff
     {
-        public string education;
+       // public Nurse nrse { get; set; }
+        private string _education;
+        
+        public string Education
+        {
+            get { return _education; }
+            set {if(value != null) _education = value; }
+        }
+
         public override int EncashSalary() => 100000;
        
     }
@@ -78,11 +112,14 @@ namespace BusinessLayerLogic
     public class Nurse : Staff
     {
         public override int EncashSalary() => 10000;
+       // public WardBoy wboy { get; set; }
+       // public ICollection<Doctor> doctr { get; set; }
     }
 
     public class WardBoy : Staff
     {
         public override int EncashSalary() => 5000;
+       // public Nurse nse { get; set; }
     }
 
     
