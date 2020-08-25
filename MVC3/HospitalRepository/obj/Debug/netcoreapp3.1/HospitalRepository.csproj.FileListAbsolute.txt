@@ -1,0 +1,12 @@
+C:\Users\SagarPandita\source\repos\HospitalRepository\bin\Debug\netcoreapp3.1\HospitalRepository.deps.json
+C:\Users\SagarPandita\source\repos\HospitalRepository\bin\Debug\netcoreapp3.1\HospitalRepository.dll
+C:\Users\SagarPandita\source\repos\HospitalRepository\obj\Debug\netcoreapp3.1\HospitalRepository.csprojAssemblyReference.cache
+C:\Users\SagarPandita\source\repos\HospitalRepository\obj\Debug\netcoreapp3.1\HospitalRepository.AssemblyInfoInputs.cache
+C:\Users\SagarPandita\source\repos\HospitalRepository\obj\Debug\netcoreapp3.1\HospitalRepository.AssemblyInfo.cs
+C:\Users\SagarPandita\source\repos\HospitalRepository\bin\Debug\netcoreapp3.1\HospitalRepository.pdb
+C:\Users\SagarPandita\source\repos\HospitalRepository\bin\Debug\netcoreapp3.1\PatientLibrary.dll
+C:\Users\SagarPandita\source\repos\HospitalRepository\bin\Debug\netcoreapp3.1\PatientLibrary.pdb
+C:\Users\SagarPandita\source\repos\HospitalRepository\obj\Debug\netcoreapp3.1\HospitalRepository.csproj.CoreCompileInputs.cache
+C:\Users\SagarPandita\source\repos\HospitalRepository\obj\Debug\netcoreapp3.1\HospitalRepository.csproj.CopyComplete
+C:\Users\SagarPandita\source\repos\HospitalRepository\obj\Debug\netcoreapp3.1\HospitalRepository.dll
+C:\Users\SagarPandita\source\repos\HospitalRepository\obj\Debug\netcoreapp3.1\HospitalRepository.pdb

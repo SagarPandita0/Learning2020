@@ -1,0 +1,9 @@
+C:\Users\SagarPandita\source\repos\PatientLibrary\bin\Debug\netcoreapp3.1\PatientLibrary.deps.json
+C:\Users\SagarPandita\source\repos\PatientLibrary\bin\Debug\netcoreapp3.1\PatientLibrary.dll
+C:\Users\SagarPandita\source\repos\PatientLibrary\bin\Debug\netcoreapp3.1\PatientLibrary.pdb
+C:\Users\SagarPandita\source\repos\PatientLibrary\obj\Debug\netcoreapp3.1\PatientLibrary.AssemblyInfoInputs.cache
+C:\Users\SagarPandita\source\repos\PatientLibrary\obj\Debug\netcoreapp3.1\PatientLibrary.AssemblyInfo.cs
+C:\Users\SagarPandita\source\repos\PatientLibrary\obj\Debug\netcoreapp3.1\PatientLibrary.dll
+C:\Users\SagarPandita\source\repos\PatientLibrary\obj\Debug\netcoreapp3.1\PatientLibrary.pdb
+C:\Users\SagarPandita\source\repos\PatientLibrary\obj\Debug\netcoreapp3.1\PatientLibrary.csprojAssemblyReference.cache
+C:\Users\SagarPandita\source\repos\PatientLibrary\obj\Debug\netcoreapp3.1\PatientLibrary.csproj.CoreCompileInputs.cache

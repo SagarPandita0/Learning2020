@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<br />
+Add Patient
+<br />
+<form action="/Home/AddPat" method="post">
+    Enter Name: <input type="text" name="Name" />
+    Enter Phone: <input type="text" name="Phone" />
+    Enter Address: <input type="text" name="Address" />
+    <input type="submit" value="Add Patient" />
+</form>
+<br />
+Add Problem
+<br />
+<form action="/Home/AddPro" method="post">
+    Enter Name: <input type="text" name="Name" />
+    Enter Description: <input type="text" name="Description" />
+    <input type="submit" value="Add Problem" />
+</form>
+<br />
+Add Treatment
+<br />
+<form action="/Home/AddT" method="post">
+    Enter Name: <input type="text" name="Name" />
+    Enter Dosage: <input type="text" name="Dosage" />
+    <input type="submit" value="Add Treatment" />
+</form>
+<br />
+<form action="/Home/AddFinalProblem" method="post">
+    <input type="submit" value="Add Next Problem" />
+</form>
+<br />
+<form action="/Home/AddFinalPatient" method="post">
+    <input type="submit" value="Add Next Patient" />
+</form>
+<br />
+<form action="/Home/AddFinal" method="post">
+    <input type="submit" value="Add Final" />
+</form>
+<br />
+<form action="/Home/AddToDB" method="post">
+    <input type="submit" value="Add To Database" />
+</form>
+<br />
+<table border="1" width="100%">
+    <tr>
+        <td width="10%">Name</td>
+        <td width="10%">Phone</td>
+        <td width="10%">Address</td>
+        <td width="70%">
+            <table width="100%">
+                <tr>
+                    <td width="50%">Problem</td>
+                    <td width="50%">Treatment</td>
+                </tr>
+                <tr>
+                    <td width="25%">Name</td>
+                    <td width="25%">Description</td>
+                    <td width="25%">Name</td>
+                    <td width="25%">Dosage</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    @{
+        if (!(Model.patientList is null))
+        {
+            foreach (var patient in Model.patientList)
+            {
+                <tr>
+                    <td width="10%">@patient.Name</td>
+                    <td width="10%">@patient.Phone</td>
+                    <td width="10%">@patient.Address</td>
+                    @if (!(patient.Problems is null))
+                    {
+                        <td width="70%">
+                            <table border="1" width="100%">
+                                @{
+                                    foreach (var problem in @patient.Problems)
+                                    {
+                                        <tr>
+                                            <td width="25%">@problem.Name</td>
+                                            <td width="25%">@problem.Description</td>
+                                            @if (!(problem.Treatment is null))
+                                            {
+                                                <td width="50">
+                                                    <table width="100%">
+                                                        @{
+                                                            foreach (var treatment in problem.Treatment)
+                                                            {
+                                                                <tr>
+                                                                    <td width="50%">@treatment.Name</td>
+                                                                    <td width="50%">@treatment.Dosage</td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </table>
+                                                </td>
+                                            }
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </td>
+                    }
+                </tr>
+            }
+        }
+        else if (!(Model.currentPatient is null))
+        {
+            <tr>
+                <td width="10%">@Model.currentPatient.Name</td>
+                <td width="10%">@Model.currentPatient.Phone</td>
+                <td width="10%">@Model.currentPatient.Address</td>
+                @if (!(Model.currentProblem is null))
+                {
+                    <td width="70%">
+                        <table border="1" width="100%">
+                            <tr>
+                                <td width="25%">@Model.currentProblem.Name</td>
+                                <td width="25%">@Model.currentProblem.Description</td>
+                                @if (!(Model.currentProblem.Treatment is null))
+                                {
+                                    <td>
+                                        <table border="1" width="100%">
+                                            @{
+                                                foreach (var treatment in Model.currentProblem.Treatment)
+                                                {
+                                                    <tr>
+                                                        <td width="50%">@treatment.Name</td>
+                                                        <td width="50%">@treatment.Dosage</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </table>
+                                    </td>
+                                }
+                            </tr>
+                        </table>
+                    </td>
+                }
+            </tr>
+        }
+    }
+</table>
