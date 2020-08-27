@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC3", "MVC3.csproj", "{93B909BC-294E-415A-ABA1-96F56D2AB2A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalRepository", "..\Users\SagarPandita\source\repos\HospitalRepository\HospitalRepository.csproj", "{7F633DEA-A911-4939-874D-6EFD9D07948C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalRepository", "..\Users\SagarPandita\source\repos\HospitalRepository\HospitalRepository.csproj", "{7F633DEA-A911-4939-874D-6EFD9D07948C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientLibrary", "..\Users\SagarPandita\source\repos\PatientLibrary\PatientLibrary.csproj", "{461D95B8-0AFD-4BC8-9B2A-81637CF665B5}"
 EndProject

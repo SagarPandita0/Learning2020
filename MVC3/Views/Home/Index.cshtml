@@ -1,7 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/ClientSide/PatientModel.js"></script>
+<script>
+    //controller code
+    var patient = new Patient();
+    function UpdatePatient() {
+        this.patient.name = $("#txtname").val();
+        this.patient.address = $("#txtaddress").val();
+    }
+    function AddProblems() {
+        var problem = new Problem();
+        problem.name = $("#txtproblem").val();
+        this.patient.Problems.push(problem);
+        $("#txtproblem").val("");
 
+    }
+    function Submit() {
+        var check = this.patient;
+        $.post("/Home/Submit", this.patient, function (res) {
+            this.patient = new Patient();
+            $("#txtname").val("");
+            $("#txtaddress").val("");
+        });
+
+    }
+</script>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
@@ -9,45 +34,42 @@
 <br />
 Add Patient
 <br />
-<form action="/Home/AddPat" method="post">
-    Enter Name: <input type="text" name="Name" />
-    Enter Phone: <input type="text" name="Phone" />
-    Enter Address: <input type="text" name="Address" />
-    <input type="submit" value="Add Patient" />
-</form>
+    Enter Name:
+<input type="text" onchange="UpdatePatient()" id="txtname" name="name" />
+    Enter Phone:
+<input type="text" name="Phone" />
+    Enter Address:
+<input type="text" onchange="UpdatePatient()" id="txtaddress" name="address" />
 <br />
 Add Problem
 <br />
-<form action="/Home/AddPro" method="post">
-    Enter Name: <input type="text" name="Name" />
-    Enter Description: <input type="text" name="Description" />
-    <input type="submit" value="Add Problem" />
-</form>
+    Enter Name:
+<input type="text" id="txtproblem" name="name" />
+    Enter Description:
+<input type="text" name="Description" />
+<input type="button" onclick="AddProblems()" value="Add Problem" />
 <br />
 Add Treatment
 <br />
-<form action="/Home/AddT" method="post">
-    Enter Name: <input type="text" name="Name" />
-    Enter Dosage: <input type="text" name="Dosage" />
-    <input type="submit" value="Add Treatment" />
-</form>
+    Enter Name:
+<input type="text" name="Name" />
+    Enter Dosage:
+<input type="text" name="Dosage" />
+<input type="submit" value="Add Treatment" />
 <br />
-<form action="/Home/AddFinalProblem" method="post">
-    <input type="submit" value="Add Next Problem" />
-</form>
+<input type="submit" value="Add Next Problem" />
 <br />
-<form action="/Home/AddFinalPatient" method="post">
-    <input type="submit" value="Add Next Patient" />
-</form>
+<input type="submit" value="Add Next Patient" />
 <br />
-<form action="/Home/AddFinal" method="post">
-    <input type="submit" value="Add Final" />
-</form>
+<input type="button" onclick="Submit()" value="Add Final" />
 <br />
-<form action="/Home/AddToDB" method="post">
-    <input type="submit" value="Add To Database" />
-</form>
+<input type="submit" value="Add To Database" />
 <br />
+<label for="example">Patient Name: </label>
+<input id="example" type="text" name="text">
+<input type="submit" value="Search DB" />
+<br />
+
 <table border="1" width="100%">
     <tr>
         <td width="10%">Name</td>
@@ -68,84 +90,4 @@ Add Treatment
             </table>
         </td>
     </tr>
-    @{
-        if (!(Model.patientList is null))
-        {
-            foreach (var patient in Model.patientList)
-            {
-                <tr>
-                    <td width="10%">@patient.Name</td>
-                    <td width="10%">@patient.Phone</td>
-                    <td width="10%">@patient.Address</td>
-                    @if (!(patient.Problems is null))
-                    {
-                        <td width="70%">
-                            <table border="1" width="100%">
-                                @{
-                                    foreach (var problem in @patient.Problems)
-                                    {
-                                        <tr>
-                                            <td width="25%">@problem.Name</td>
-                                            <td width="25%">@problem.Description</td>
-                                            @if (!(problem.Treatment is null))
-                                            {
-                                                <td width="50">
-                                                    <table width="100%">
-                                                        @{
-                                                            foreach (var treatment in problem.Treatment)
-                                                            {
-                                                                <tr>
-                                                                    <td width="50%">@treatment.Name</td>
-                                                                    <td width="50%">@treatment.Dosage</td>
-                                                                </tr>
-                                                            }
-                                                        }
-                                                    </table>
-                                                </td>
-                                            }
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                        </td>
-                    }
-                </tr>
-            }
-        }
-        else if (!(Model.currentPatient is null))
-        {
-            <tr>
-                <td width="10%">@Model.currentPatient.Name</td>
-                <td width="10%">@Model.currentPatient.Phone</td>
-                <td width="10%">@Model.currentPatient.Address</td>
-                @if (!(Model.currentProblem is null))
-                {
-                    <td width="70%">
-                        <table border="1" width="100%">
-                            <tr>
-                                <td width="25%">@Model.currentProblem.Name</td>
-                                <td width="25%">@Model.currentProblem.Description</td>
-                                @if (!(Model.currentProblem.Treatment is null))
-                                {
-                                    <td>
-                                        <table border="1" width="100%">
-                                            @{
-                                                foreach (var treatment in Model.currentProblem.Treatment)
-                                                {
-                                                    <tr>
-                                                        <td width="50%">@treatment.Name</td>
-                                                        <td width="50%">@treatment.Dosage</td>
-                                                    </tr>
-                                                }
-                                            }
-                                        </table>
-                                    </td>
-                                }
-                            </tr>
-                        </table>
-                    </td>
-                }
-            </tr>
-        }
-    }
 </table>
