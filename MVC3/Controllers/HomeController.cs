@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using HospitalRepository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MVC3.Models;
 using PatientLibrary;
@@ -26,9 +29,10 @@ namespace MVC3.Controllers
 
         public IActionResult Index()
         {
+            
             return View("Index", pvm);
         }
-
+        
         public IActionResult Privacy()
         {
             return View();
@@ -36,7 +40,18 @@ namespace MVC3.Controllers
 
         public IActionResult AddPat(Patient x)
         {
-            pvm.currentPatient = x;
+            var context = new ValidationContext(x,null,null);
+            List<ValidationResult> validationResults =new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(x, context, validationResults, true);
+            if (isValid)
+            {
+                pvm.errors = new List<ValidationResult>();
+                pvm.currentPatient = x;
+            }
+            else
+            {
+                pvm.errors = validationResults;
+            }
             return View("Index", pvm);
         }
 
@@ -97,7 +112,7 @@ namespace MVC3.Controllers
             pvm.currentProblem = null;
             return View("Index", pvm);
         }
-
+   
         public IActionResult AddFinal()
         {
             if (!(pvm.currentProblem is null))
@@ -133,6 +148,19 @@ namespace MVC3.Controllers
             pvm.currentPatient = null;
             pvm.patientList = null;
             return View("Index", pvm);
+        }
+        public IActionResult SearchDB(string SearchString)
+        {
+            dB.Database.EnsureCreated();
+            var brandItems = dB.patients
+    .Where(b => b.Name == SearchString)
+    .Select(b => new SelectListItem
+    {
+        Value = b.id.ToString(),
+        Text = b.Name
+    })
+    .ToListAsync();
+            return View("SearchDB",brandItems);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
