@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using AutoMapper;
 using HospitalRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using PatientLibrary;
+using ValidationContext = System.ComponentModel.DataAnnotations.ValidationContext;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,9 +32,11 @@ namespace MVC3.Controllers
         HospitalDbContext dB;
         // GET: api/<PatientAPI>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Patient> Get()
         {
-            return new string[] { "value1", "value2" };
+
+            return dB.patients
+                .Include(pat => pat.Problems);
         }
 
         // GET api/<PatientAPI>/5
@@ -42,16 +48,28 @@ namespace MVC3.Controllers
 
         // POST api/<PatientAPI>
         [HttpPost]
-        public IActionResult Post([FromBody] Patient x)
+        public IActionResult Post([FromBody] PatientDto x) 
         {
-            var context = new ValidationContext(x, null, null);
+            
+            //use automapper
+            Patient obj = new Patient();
+            obj.name = x.name;
+            obj.id = x.id;
+            obj.Phone = x.Phone;
+            obj.address = x.address;
+            obj.Problems = x.Problems;
+            var context = new ValidationContext(obj, null, null);
+            // ObjectMapper<Patient, PatientDto> mapper = new ObjectMapper<Patient, PatientDto>();
             List<ValidationResult> validationResults = new List<ValidationResult>();
-            bool isValid = Validator.TryValidateObject(x, context, validationResults, true);
+            bool isValid = Validator.TryValidateObject(obj, context, validationResults, true);
             if (isValid)
             {
-                dB.patients.Add(x);
+                dB.patients.Add(obj);
                 dB.SaveChanges();
-                List<Patient> PatientList = dB.patients.ToList<Patient>();
+
+                List<Patient> PatientList = dB.patients
+                    .Include(pat => pat.Problems)
+                    .ToList<Patient>();
                 return Ok(PatientList);
             }
             else

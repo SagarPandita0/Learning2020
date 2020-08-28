@@ -3,104 +3,107 @@
 }
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/ClientSide/PatientModel.js"></script>
+
 <script>
     //controller code
     var patient = new Patient();
+    var problemobj = new Problem();
+    
     function UpdatePatient() {
         this.patient.name = $("#txtname").val();
         this.patient.address = $("#txtaddress").val();
+        this.patient.Phone = $("#txtphone").val();
+
     }
     function AddProblems() {
-        var problemobj = new Problem();
+
         problemobj.name = $("#txtproblem").val();
         this.patient.Problems.push(problemobj);
         $("#txtproblem").val("");
-
     }
-                function Submit() {
-                    var check = this.patient;
-                    $.ajax({
-                        url: "/api/PatientAPI/",
-                        type: "POST",
-                        data: JSON.stringify(check),
-                        contentType: "application/json ; charset=utf-8",
-                        dataType: "json",
-                        success: function (response) {
-                            selector = "#showTable";
-                            constructTable(selector);
-                            function constructTable(selector) {
-
-                                // Getting the all column names 
-                                var cols = Headers(response, selector);
-
-                                // Traversing the JSON data 
-                                for (var i = 0; i < response.length; i++) {
-                                    var row = $('<tr/>');
-                                    for (var colIndex = 0; colIndex < cols.length; colIndex++) {
-                                        var val = response[i][cols[colIndex]];
-
-                                        // If there is any key, which is matching 
-                                        // with the column name 
-                                        if (val == null) val = "";
-                                        row.append($('<td/>').html(val));
-                                    }
-
-                                    // Adding each row to the table 
-                                    $(selector).append(row);
-                                }
-                            }
-
-                            function Headers(response, selector) {
-                                var columns = [];
-                                var header = $('<tr/>');
-
-                                for (var i = 0; i < response.length; i++) {
-                                    var row = response[i];
-
-                                    for (var k in row) {
-                                        if ($.inArray(k, columns) == -1) {
-                                            columns.push(k);
-
-                                            // Creating the header 
-                                            header.append($('<th/>').html(k));
-                                        }
-                                    }
-                                }
-
-                                // Appending the header to the table 
-                                $(selector).append(header);
-                                return columns;
-                            }
-                        }
+    function AddTreatment() {
+        problemobj.treatment = $("#txttreatmentname").val();
+    }
+    function Submit() {
+        var check = this.patient;
+        $.ajax({
+            url: "/api/PatientAPI/",
+            type: "POST",
+            data: JSON.stringify(check),
+            contentType: "application/json ; charset=utf-8",
+            dataType: "json",
+            success: function (res) {
+                cpatient = new Patient();
+                
+                var jsondata = JSON.parse(JSON.stringify(res));
+                console.log(JSON.stringify(res));
+                var length = jsondata.length;
+                var rowdata = '<table border="1">';
+                for (var i = 0; i < length; i++) {
+                    var htmldata = '<tr>';
+                    htmldata += '<td>' + jsondata[i].name + '</td>';
+                    htmldata += '<td>' + jsondata[i].phone + '</td>';
+                    htmldata += '<td>' + jsondata[i].address + '</td>';
+                    var problemdata = '<table border="1">';
+                    for (var j = 0; j < jsondata[i].problems.length; j++) {
+                        problemdata += '<tr><td>' + jsondata[i].problems[j].name + '</td>';
+                        problemdata += '<td>' + jsondata[i].problems[j].description + '</td>';  
                     }
-        )
+                    problemdata += '</table>';
+                    htmldata += '<td>' + problemdata + '</td></tr>';
+                    rowdata += htmldata;
                 }
-               
+                rowdata += '</table>';
+                $("#showTable").html(rowdata);
+            }
+        }
+        )
+    }
+
+</script>
+<script>
+    $(document).ready( function () {
+        $.ajax({
+            url: "api/PatientAPI/",
+            type: "GET",
+            contentType: "application/json ; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $.each(response, function (key, value) {
+                    alert(key + ": " + $.each(value, function (v) {
+                        v[0]; v[1]; v[2]; v[3];
+                    }))
+                });
+                
+            }
+        })
+    });
+
 </script>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <br />
-Add Patient
+    Add Patient
 <br />
     Enter Name:
 <input type="text" onchange="UpdatePatient()" id="txtname" name="name" />
     Enter Phone:
-<input type="text" name="Phone" />
+<input type="text" onchange="UpdatePatient()" id="txtphone" name="Phone" />
     Enter Address:
 <input type="text" onchange="UpdatePatient()" id="txtaddress" name="address" />
 <br />
-Add Problem
+    Add Problem
 <br />
     Enter Name:
 <input type="text" id="txtproblem" name="name" />
-<input type="button" onclick="AddProblems()" value="Add Problem"  />
+<input type="button" onclick="AddProblems()" value="Add Problem" />
 <br />
-Add Treatment
+    Add Treatment
 <br />
     Enter Name:
-<input type="text" name="Name" />
+<input type="text" id="txttreatmentname" name="Name" />
     Enter Dosage:
 <input type="text" name="Dosage" />
 <input type="submit" value="Add Treatment" />
@@ -109,7 +112,7 @@ Add Treatment
 <br />
 <input type="submit" value="Add Next Patient" />
 <br />
-<input type="button" onclick="Submit()" value="SUBMIT"/>
+<input type="button" onclick="Submit()" value="SUBMIT" />
 <br />
 <input type="submit" value="Add To Database" />
 <br />
@@ -118,5 +121,4 @@ Add Treatment
 <input type="submit" value="Search DB" />
 <br />
 <table id="showTable" class="table table-bordered table-striped">
-
 </table>
