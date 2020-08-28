@@ -13,20 +13,69 @@
     function AddProblems() {
         var problemobj = new Problem();
         problemobj.name = $("#txtproblem").val();
-        this.patient.Problems.push(problem);
+        this.patient.Problems.push(problemobj);
         $("#txtproblem").val("");
 
     }
-    function Submit() {
-        var check = this.patient;
-        $.post("/api/PatientAPI", this.patient, function (res) {
-            this.patient = new Patient();
-            $("#txtname").val("");
-            $("#txtaddress").val("");
-        }, function () {
-        });    
-    }
-    
+                function Submit() {
+                    var check = this.patient;
+                    $.ajax({
+                        url: "/api/PatientAPI/",
+                        type: "POST",
+                        data: JSON.stringify(check),
+                        contentType: "application/json ; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            selector = "#showTable";
+                            constructTable(selector);
+                            function constructTable(selector) {
+
+                                // Getting the all column names 
+                                var cols = Headers(response, selector);
+
+                                // Traversing the JSON data 
+                                for (var i = 0; i < response.length; i++) {
+                                    var row = $('<tr/>');
+                                    for (var colIndex = 0; colIndex < cols.length; colIndex++) {
+                                        var val = response[i][cols[colIndex]];
+
+                                        // If there is any key, which is matching 
+                                        // with the column name 
+                                        if (val == null) val = "";
+                                        row.append($('<td/>').html(val));
+                                    }
+
+                                    // Adding each row to the table 
+                                    $(selector).append(row);
+                                }
+                            }
+
+                            function Headers(response, selector) {
+                                var columns = [];
+                                var header = $('<tr/>');
+
+                                for (var i = 0; i < response.length; i++) {
+                                    var row = response[i];
+
+                                    for (var k in row) {
+                                        if ($.inArray(k, columns) == -1) {
+                                            columns.push(k);
+
+                                            // Creating the header 
+                                            header.append($('<th/>').html(k));
+                                        }
+                                    }
+                                }
+
+                                // Appending the header to the table 
+                                $(selector).append(header);
+                                return columns;
+                            }
+                        }
+                    }
+        )
+                }
+               
 </script>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -46,7 +95,7 @@ Add Problem
 <br />
     Enter Name:
 <input type="text" id="txtproblem" name="name" />
-<input type="button" onclick="AddProblems()" value="Add Problem" />
+<input type="button" onclick="AddProblems()" value="Add Problem"  />
 <br />
 Add Treatment
 <br />
@@ -60,7 +109,7 @@ Add Treatment
 <br />
 <input type="submit" value="Add Next Patient" />
 <br />
-<input type="button" onclick="Submit()" value="Add Final" />
+<input type="button" onclick="Submit()" value="SUBMIT"/>
 <br />
 <input type="submit" value="Add To Database" />
 <br />
@@ -68,13 +117,6 @@ Add Treatment
 <input id="example" type="text" name="text">
 <input type="submit" value="Search DB" />
 <br />
-<table id="dataTable" class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>PatientID</th> 
-        </tr>
-    </thead>
+<table id="showTable" class="table table-bordered table-striped">
+
 </table>
