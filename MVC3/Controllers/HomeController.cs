@@ -16,23 +16,11 @@ namespace MVC3.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        
-        HospitalDbContext dB;
-
-        public HomeController(ILogger<HomeController> logger, HospitalDbContext hosdb)
-        {
-            _logger = logger;
-            dB = hosdb;
-        }
-
         public IActionResult Index()
         {
             
             return View("Index");
-        }
-        
+        }     
         public IActionResult Privacy()
         {
             return View();
@@ -40,21 +28,7 @@ namespace MVC3.Controllers
         public IActionResult Add()
         {
             return View("Index");
-        }
-        public IActionResult Submit(Patient x)
-        {
-            var context = new ValidationContext(x,null,null);
-            List<ValidationResult> validationResults =new List<ValidationResult>();
-            bool isValid = Validator.TryValidateObject(x, context, validationResults, true);
-            if (isValid)
-            {
-                dB.patients.Add(x);
-                dB.SaveChanges();
-            }
-            
-            return View("Index");
-        }
-
+        }       
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

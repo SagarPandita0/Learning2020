@@ -11,21 +11,22 @@
         this.patient.address = $("#txtaddress").val();
     }
     function AddProblems() {
-        var problem = new Problem();
-        problem.name = $("#txtproblem").val();
+        var problemobj = new Problem();
+        problemobj.name = $("#txtproblem").val();
         this.patient.Problems.push(problem);
         $("#txtproblem").val("");
 
     }
     function Submit() {
         var check = this.patient;
-        $.post("/Home/Submit", this.patient, function (res) {
+        $.post("/api/PatientAPI", this.patient, function (res) {
             this.patient = new Patient();
             $("#txtname").val("");
             $("#txtaddress").val("");
-        });
-
+        }, function () {
+        });    
     }
+    
 </script>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -45,8 +46,6 @@ Add Problem
 <br />
     Enter Name:
 <input type="text" id="txtproblem" name="name" />
-    Enter Description:
-<input type="text" name="Description" />
 <input type="button" onclick="AddProblems()" value="Add Problem" />
 <br />
 Add Treatment
@@ -69,25 +68,13 @@ Add Treatment
 <input id="example" type="text" name="text">
 <input type="submit" value="Search DB" />
 <br />
-
-<table border="1" width="100%">
-    <tr>
-        <td width="10%">Name</td>
-        <td width="10%">Phone</td>
-        <td width="10%">Address</td>
-        <td width="70%">
-            <table width="100%">
-                <tr>
-                    <td width="50%">Problem</td>
-                    <td width="50%">Treatment</td>
-                </tr>
-                <tr>
-                    <td width="25%">Name</td>
-                    <td width="25%">Description</td>
-                    <td width="25%">Name</td>
-                    <td width="25%">Dosage</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
+<table id="dataTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>PatientID</th> 
+        </tr>
+    </thead>
 </table>
