@@ -1,0 +1,36 @@
+﻿using System;
+using System.Threading.Tasks;
+using System.Threading;
+namespace ConsoleApp1
+{
+    class pract
+    {
+        delegate void PointtoFun1();
+        static PointtoFun1 p;
+        static void Main(string[] args)
+        {
+            p += fun1;
+            p += fun2;
+            p.Invoke();
+
+            /* Task t1 = new Task(fun1);
+             Task t2 = new Task(fun2);
+             t1.Start();
+             t2.Start();
+            */
+            // Console.WriteLine("Hello World!");
+            Console.Read();
+        }
+
+        static void fun1()
+        {
+            Thread.Sleep(10000);
+            Console.WriteLine("Fun1");
+
+        }
+        static void fun2()
+        {
+            Console.WriteLine("Fun2");
+        }
+    }
+}

@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace BusinessLayerLogic
 {
-    public abstract class Staff
+    public interface IStaff
     {
         public string Name { get; set; }
        public string Department { get; set; }
       public string JoiningDate { get; set; }
-        public abstract int EncashSalary();
+      //  public interface int EncashSalary();
     }
 
     //public class ListWithDuplicates : List<KeyValuePair<string, string>>
@@ -118,7 +118,7 @@ namespace BusinessLayerLogic
         string description;
         string patientName;
     }
-    public class Doctor : Staff
+    public class Doctor : IStaff
     {
        // public Nurse nrse { get; set; }
         private string _education;
@@ -129,23 +129,47 @@ namespace BusinessLayerLogic
             set {if(value != null) _education = value; }
         }
 
-        public override int EncashSalary() => 100000;
+        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Department { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string JoiningDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+       // public override int EncashSalary() => 100000;
        
     }
 
-    public class Nurse : Staff
+    public class Nurse : IStaff
     {
-        public override int EncashSalary() => 10000;
-       // public WardBoy wboy { get; set; }
-       // public ICollection<Doctor> doctr { get; set; }
+        // public override int EncashSalary() => 10000;
+        // public WardBoy wboy { get; set; }
+        // public ICollection<Doctor> doctr { get; set; }
+        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Department { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string JoiningDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 
-    public class WardBoy : Staff
+    public class WardBoy : IStaff
     {
-        public override int EncashSalary() => 5000;
+        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Department { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string JoiningDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+       // public override int EncashSalary() => 5000;
        // public Nurse nse { get; set; }
     }
 
+    public static class StaffFactory
+    {
+        public static IStaff Build(string type)
+        {
+            return type switch
+            {
+                "Doctor" => new Doctor(),
+                "Nurse" => new Nurse(),
+                "WardBoy" => new WardBoy(),
+                _ => throw new ArgumentException("Invalid type", "type"),
+            };
+        }
+    }
     
 
 }
