@@ -11,9 +11,9 @@ namespace ConsoleApp1
     {
           static void Main(String[] args)
         {
-            Console.WriteLine("Enter a number of wheels between 1 and 12 to build a vehicle and press enter");
+            Console.WriteLine("Type Staff which you wish to call.[Doctor,Nurse,WardBoy]");
 
-            var category = Console.ReadLine();
+            var category = Console.ReadLine().ToLower();
             var catg = StaffFactory.Build(category);
             Console.WriteLine($" You built a {catg.GetType().Name}");
             Console.Read();
