@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace BusinessLayerLogic
 {
-    public interface IStaff
+    public abstract class Staff
     {
         public string Name { get; set; }
        public string Department { get; set; }
@@ -26,11 +26,11 @@ namespace BusinessLayerLogic
     //    }
         
     //}
-    public class Patient
+    public class Patient: IAllergies, IMedication
     {
         List<Nurse> nlist = new List<Nurse>();
         List<WardBoy> wblist = new List<WardBoy>();
-        static List<Allergies> patientAllergies = new List<Allergies>();
+        static List<IAllergies> patientAllergies = new List<IAllergies>();
       // static ListWithDuplicates pts = new ListWithDuplicates();
         static NameValueCollection myCol = new NameValueCollection();
         public int id;
@@ -61,7 +61,7 @@ namespace BusinessLayerLogic
         public void PatientAllergies(string aname,string adescription,string pname, int noy )
         {
             
-            patientAllergies.Add(new Allergies { name = aname, description = adescription, patientName = pname, numOfYears = noy });
+            //patientAllergies.Add(new IAllergies { name = aname, description = adescription, patientName = pname, numOfYears = noy });
         }
         public void PrintPatientAllergies(string pname) 
         {
@@ -99,26 +99,26 @@ namespace BusinessLayerLogic
         public string Ailment { get; set; }
         public string Allergies { get; set; }
         public void PrintEverything() { }
-        public List<Medication> Medications { get; set; }
-
-        
+        public List<IMedication> Medications { get; set; }
+        public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int NumOfYears { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string PatientName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
-    public class Allergies 
+    public interface IAllergies 
     {
-        public string name;
-        public string description;
-        public int numOfYears;
-        public string patientName;
-
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int NumOfYears { get; set; }
+        public string PatientName { get; set; }
     }
 
-    public class Medication
+    public interface IMedication
     {
-        string name;
-        string description;
-        string patientName;
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string PatientName { get; set; }
     }
-    public class Doctor : IStaff
+    public class Doctor : Staff
     {
        // public Nurse nrse { get; set; }
         private string _education;
@@ -129,43 +129,34 @@ namespace BusinessLayerLogic
             set {if(value != null) _education = value; }
         }
 
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Department { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string JoiningDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
+        
        // public override int EncashSalary() => 100000;
        
     }
 
-    public class Nurse : IStaff
+    public class Nurse : Staff
     {
         // public override int EncashSalary() => 10000;
         // public WardBoy wboy { get; set; }
         // public ICollection<Doctor> doctr { get; set; }
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Department { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string JoiningDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 
-    public class WardBoy : IStaff
+    public class WardBoy : Staff
     {
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Department { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string JoiningDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
+        
        // public override int EncashSalary() => 5000;
        // public Nurse nse { get; set; }
     }
 
     public static class StaffFactory
     {
-        public static IStaff Build(string type)
+        public static Staff Build(string type)
         {
             return type switch
             {
-                "Doctor" => new Doctor(),
-                "Nurse" => new Nurse(),
-                "WardBoy" => new WardBoy(),
+                "doctor" => new Doctor(),
+                "nurse" => new Nurse(),
+                "wardboy" => new WardBoy(),
                 _ => throw new ArgumentException("Invalid type", "type"),
             };
         }
