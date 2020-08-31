@@ -26,7 +26,7 @@ namespace BusinessLayerLogic
     //    }
         
     //}
-    public class Patient: IAllergies, IMedication, IProblem
+    public partial class Patient: IAllergies
     {
         
 
@@ -109,22 +109,26 @@ namespace BusinessLayerLogic
             }
         }
 
-        IProblem _problem = new Patient();
-        IMedication _medication = new Patient();
-        Dictionary<string, string> ailmed = new Dictionary<string, string>(); 
-        public void MapAilmentToMedication(IProblem pro,IMedication med)
-        { // Mapping Problem to medication.
-            _problem.Name = pro.Name;
-            _medication.Name = med.Name;
-            ailmed.Add(_problem.Name,_medication.Name);
-
-        }
+       
 
         public void GenerateReport() { }
 
         public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int NumOfYears { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string PatientName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    }
+    public partial class Patient : IMedication,IProblem
+    {
+        IProblem _problem = new Patient();
+        IMedication _medication = new Patient();
+        Dictionary<string, string> ailmed = new Dictionary<string, string>();
+        public void MapAilmentToMedication(IProblem pro, IMedication med)
+        { // Mapping Problem to medication.
+            _problem.Name = pro.Name;
+            _medication.Name = med.Name;
+            ailmed.Add(_problem.Name, _medication.Name);
+
+        }
     }
     public interface IAllergies 
     {
