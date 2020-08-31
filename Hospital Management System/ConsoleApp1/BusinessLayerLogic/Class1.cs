@@ -26,14 +26,17 @@ namespace BusinessLayerLogic
     //    }
         
     //}
-    public class Patient: IAllergies, IMedication
+    public class Patient: IAllergies, IMedication, IProblem
     {
+        
+
         List<Nurse> nlist = new List<Nurse>();
         List<WardBoy> wblist = new List<WardBoy>();
         static List<IAllergies> patientAllergies = new List<IAllergies>();
       // static ListWithDuplicates pts = new ListWithDuplicates();
         static NameValueCollection myCol = new NameValueCollection();
         public int id;
+        
         private string _name;
         
         public string PrintTime()
@@ -41,7 +44,7 @@ namespace BusinessLayerLogic
             return(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"));
         }
         public Patient(string pName)
-        {
+        { // call this constructor when you wish have timestamp attached.
             this.Name = pName;
             
             
@@ -49,6 +52,11 @@ namespace BusinessLayerLogic
             myCol.Add(pName,PrintTime());
             //Console.WriteLine(PrintTime()); 
         }
+
+        public Patient()
+        {
+        }
+
         public void PatientHistory(string name)
         {
             //foreach (var item in pts)
@@ -58,18 +66,24 @@ namespace BusinessLayerLogic
             //}
             Console.WriteLine("Patient History: {0}",myCol[name]);
         }
-        public void PatientAllergies(string aname,string adescription,string pname, int noy )
+        public void PatientAllergies(IAllergies pata)
         {
-            
-            //patientAllergies.Add(new IAllergies { name = aname, description = adescription, patientName = pname, numOfYears = noy });
+            List<IAllergies> allergies = new List<IAllergies>();
+            allergies.Add(pata);
         }
         public void PrintPatientAllergies(string pname) 
         {
-            IEnumerable<string> languageList = patientAllergies.Select(selector: p => p.name = pname)
+            IEnumerable<string> pPA = patientAllergies.Select(selector: p => p.Name = pname)
                                                    ;
-            Console.WriteLine(languageList);
+            Console.WriteLine(pPA);
         }
+        
+        public void PatientProblem(IProblem patp)
+        {
+            List<IProblem> problems = new List<IProblem>();
 
+            problems.Add(patp);
+        }
 
         public string Name { get; set; }
 
@@ -95,11 +109,19 @@ namespace BusinessLayerLogic
             }
         }
 
+        IProblem _problem = new Patient();
+        IMedication _medication = new Patient();
+        Dictionary<string, string> ailmed = new Dictionary<string, string>(); 
+        public void MapAilmentToMedication(IProblem pro,IMedication med)
+        { // Mapping Problem to medication.
+            _problem.Name = pro.Name;
+            _medication.Name = med.Name;
+            ailmed.Add(_problem.Name,_medication.Name);
 
-        public string Ailment { get; set; }
-        public string Allergies { get; set; }
-        public void PrintEverything() { }
-        public List<IMedication> Medications { get; set; }
+        }
+
+        public void GenerateReport() { }
+
         public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int NumOfYears { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string PatientName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -111,12 +133,17 @@ namespace BusinessLayerLogic
         public int NumOfYears { get; set; }
         public string PatientName { get; set; }
     }
-
+    
     public interface IMedication
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public string PatientName { get; set; }
+    }
+    public interface IProblem
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
     public class Doctor : Staff
     {
