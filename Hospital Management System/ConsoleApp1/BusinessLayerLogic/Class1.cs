@@ -181,10 +181,10 @@ namespace BusinessLayerLogic
         }
         private string _Name;
         private string _Address;
-        public string GetPatientName(string name)
+        public void GetPatientName(string name)
         {
            _Name = name;
-            return name;
+           
         }
         public void GetPatientAddress(string address)
         {
@@ -204,11 +204,7 @@ namespace BusinessLayerLogic
             {
                 throw new Exception("Incorrect Number entered");
             }
-        }
-        public void MapPatientToTimeLogs()
-        {
-
-        }
+        }     
        
         // this way we will be able to map multiple medications to a single problem.
         static Dictionary<string, List<Medication>> promed = new Dictionary<string, List<Medication>>();
