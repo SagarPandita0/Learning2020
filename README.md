@@ -9,8 +9,8 @@ We want to create an application for hospital management. It should have the fol
 3. Every patient can have allergies. System should have the ability to put allergy name , small description and number of years he has this allergy. Allergies are maintain patient specific and not visit specific.
 4. Patient can have multiple problems. So like a patient can have fever , cough .While entering problem system should have ability to put problem description , number of days he has this problem. Problems are tracked at visit level.
 5. Patient is allocated to doctor who gives him treatments.At any time only one Patient will be allocated to a doctor.
-6. For every problem there will be medications. For one problem there are can be mutliple treatment and medication.
-7. A medication / treatment will have name , description( 3 times in day)
+6. For every problem there will be medications. For one problem there are can be mutliple medications.
+7. A medication will have name , description( 3 times in day)
 8. Hospital have staffs which are Nurses , doctors  and  ward boys.
 9. All staff should have name , joining date and department.
 10. Doctor has Name , education like he is MD MS . 
