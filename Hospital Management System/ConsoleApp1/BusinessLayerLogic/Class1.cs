@@ -34,8 +34,8 @@ namespace BusinessLayerLogic
         {
 
         }
-        List<Nurse> nlist;
-        List<WardBoy> wblist;
+       public List<Nurse> nlist;
+       public  List<WardBoy> wblist;
         Dictionary<string,List<string>> pn = new Dictionary<string, List<string>>();
         Dictionary<string, List<string>> pwb = new Dictionary<string, List<string>>();
 
@@ -69,12 +69,11 @@ namespace BusinessLayerLogic
                 wardBoyList.Add(wardBoy.Name);
                 x--;
             }
-            pn.Add(pt._Name, wardBoyList);
+            pwb.Add(pt._Name, wardBoyList);
         }
 
-        public Doctor doctor;
 
-        static List<Allergies> patientAllergies = new List<Allergies>();
+        //static List<Allergies> patientAllergies = new List<Allergies>();
       // static ListWithDuplicates pts = new ListWithDuplicates();
         static NameValueCollection myCol = new NameValueCollection();
         public int id;      
@@ -85,7 +84,7 @@ namespace BusinessLayerLogic
         }
         public Patient(string pName)
         { // call this constructor when you wish have timestamp attached.
-            this._Name = pName;     
+            _Name = pName;     
           //  pts.Add(pName,PrintTime());
             myCol.Add(pName,PrintTime());
             //Console.WriteLine(PrintTime()); 
@@ -97,28 +96,48 @@ namespace BusinessLayerLogic
             _allergies1 = allergies;
             _problem1 = problem;
         }      
-        public void PatientHistory(string name)
+        public void GeneratePatientReport(string patientName,string address,string number)
         {
-            //foreach (var item in pts)
-            //{
-            //    string x = string.Format("{0} entered at {1} ", item.Key, item.Value);
-            //    // Console.WriteLine(x);
-            //}
-            Console.WriteLine("Patient History: {0}",myCol[name]);
+            Patient patient = new Patient();
+            patient._Name = patientName;
+            patient._Address = address;
+            patient._PhoneNumber = number;
+            myCol.Get(patient._Name); // This gives name + time of entry in system.
+
+            if (ts.ContainsKey(patientName))
+            {
+               List<Allergies> allergies =  ts[patientName]; //gives all allergies of patient.
+            }
+            if (ptop.ContainsKey(patientName))
+            {
+                List<Problem> problems = ptop[patientName]; // gives all the problems with the patient.
+            }
+
+            Dictionary<string, List<Medication>> data = DoctorRefersMedicationToPatient(patient);
+            List<Medication> medList = new List<Medication>();
+            foreach (var item in data.Keys)
+            {
+                //This will give all the medications that were administered to Patient
+                foreach (var itemm in data[item])
+                {
+                    medList.Add(itemm); //clubbing all the medications together for the report.
+                }
+            }
+            
+                     
         }
+        Dictionary<string, List<Allergies>> ts = new Dictionary<string, List<Allergies>>();
         public void IntakePatientAllergies(Allergies pata) 
         {         
             List<Allergies> allergies = new List<Allergies>();
-            Dictionary<string, List<Allergies>> ts = new Dictionary<string, List<Allergies>>();
+           
             //Enter Patient Allergy count
             int x = Int32.Parse(Console.ReadLine());
             Allergies allergies1 = new Allergies();
             //start entering details one by one
-
             
             while (x != 0)
-            {
-                
+            {   
                 allergies1.Name = pata.Name;
                 allergies1.Description = pata.Description;
                 allergies1.NumOfYears = pata.NumOfYears;
@@ -129,16 +148,21 @@ namespace BusinessLayerLogic
             }
             ts.Add(allergies1.PatientName, allergies);
         }
-        public void PrintPatientAllergies(string pname) 
-        {
-        IEnumerable<string> pPA = patientAllergies.Select(selector: p => p.Name = pname);
-                                                   
-            Console.WriteLine(pPA);
-        }
+        //public void PrintPatientAllergies(string pname) 
+        //{
+        //    IEnumerable<List<Allergies>> pPA = ts.Select(p =>
+        //    {
+        //        Allergies v = p.Key = pname;
+        //        return v;
+        //    });
+
+        //    Console.WriteLine(pPA);
+        //}
+        static Dictionary<string, List<Problem>> ptop = new Dictionary<string, List<Problem>>();
         public void MapPatientToProblems(Problem patp)
         {
             List<Problem> problems = new List<Problem>();
-            Dictionary<string, List<Problem>> ptop= new Dictionary<string, List<Problem>>();
+       
             int x = Int32.Parse(Console.ReadLine());
             Problem problem = new Problem();
             //start entering details one by one
@@ -157,9 +181,10 @@ namespace BusinessLayerLogic
         }
         private string _Name;
         private string _Address;
-        public void GetPatientNam(string name)
+        public string GetPatientName(string name)
         {
            _Name = name;
+            return name;
         }
         public void GetPatientAddress(string address)
         {
@@ -180,8 +205,8 @@ namespace BusinessLayerLogic
                 throw new Exception("Incorrect Number entered");
             }
         }
-        public void PatientGenerateReport() { 
-    
+        public void MapPatientToTimeLogs()
+        {
 
         }
        
@@ -202,19 +227,28 @@ namespace BusinessLayerLogic
             }
             promed.Add(_problem1.Name, pro.medications);
         }
-        public List<Medication> DoctorRefersMedicationToPatient(string problem)
+
+        public Doctor doctor;
+        public Dictionary<string,List<Medication>> DoctorRefersMedicationToPatient(Patient patient)
         {
             //doctor will access the mapped Medication-to-Problem.
             //Doctor will take in Patient Problem and give medication.
-            string problemWithPatient=problem;
-            foreach( var item in promed)
+            Patient p = patient;
+            Doctor d = new Doctor();
+            p.doctor = d;
+           List<Problem> problems = ptop[p._Name];
+            Dictionary<string, List<Medication>> keyValuePairs = new Dictionary<string, List<Medication>>();
+            foreach (var item in problems)
             {
-                if (problemWithPatient.Equals(item.Key))
+                foreach (var items in promed)
                 {
-                    return item.Value; // this will give the medications that exist for the particular problem.
+                    if (item.Equals(items.Key))
+                    {
+                        keyValuePairs.Add(items.Key,items.Value); // this will give the medications that exist for the particular problems.
+                    }
                 }
             }
-
+            
             return null;
         }
     }
@@ -241,7 +275,6 @@ namespace BusinessLayerLogic
     }
     public class Doctor : Staff
     {
-        public Patient patient;
 
         public string Education { get; set; }
 
