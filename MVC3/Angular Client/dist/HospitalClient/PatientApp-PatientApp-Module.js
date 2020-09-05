@@ -16,6 +16,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PatientApp.PatientAddComponent */ "./src/PatientApp/PatientApp.PatientAddComponent.ts");
 /* harmony import */ var _PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PatientApp.Routing */ "./src/PatientApp/PatientApp.Routing.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+/* harmony import */ var _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Security/Security.Interceptor */ "./src/Security/Security.Interceptor.ts");
+
+
 
 
 
@@ -27,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 class PatientModule {
 }
 PatientModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: PatientModule, bootstrap: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]] });
-PatientModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function PatientModule_Factory(t) { return new (t || PatientModule)(); }, providers: [], imports: [[
+PatientModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function PatientModule_Factory(t) { return new (t || PatientModule)(); }, providers: [{ provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HTTP_INTERCEPTORS"], useClass: _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__["JwtInterceptor"], multi: true }], imports: [[
             _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(_PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__["PatientRoutes"])
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](PatientModule, { declarations: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]] }); })();
@@ -40,7 +44,7 @@ PatientModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInje
                 imports: [
                     _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(_PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__["PatientRoutes"])
                 ],
-                providers: [],
+                providers: [{ provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HTTP_INTERCEPTORS"], useClass: _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__["JwtInterceptor"], multi: true }],
                 bootstrap: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]]
             }]
     }], null, null); })();
