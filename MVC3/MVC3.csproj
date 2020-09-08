@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Users\SagarPandita\source\repos\HospitalRepository\HospitalRepository.csproj" />
-    <ProjectReference Include="..\Users\SagarPandita\source\repos\PatientLibrary\PatientLibrary.csproj" />
+    <ProjectReference Include="..\Users\SagarPandita\Desktop\powershellgitclone\Learning2020\MVC3\HospitalRepository\HospitalRepository.csproj" />
+    <ProjectReference Include="..\Users\SagarPandita\Desktop\powershellgitclone\Learning2020\MVC3\PatientLibrary\PatientLibrary.csproj" />
   </ItemGroup>
 
 </Project>
