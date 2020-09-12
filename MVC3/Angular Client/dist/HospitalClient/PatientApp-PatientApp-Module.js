@@ -1,58 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["PatientApp-PatientApp-Module"],{
 
-/***/ "./src/PatientApp/PatientApp.Module.ts":
-/*!*********************************************!*\
-  !*** ./src/PatientApp/PatientApp.Module.ts ***!
-  \*********************************************/
-/*! exports provided: PatientModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PatientModule", function() { return PatientModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PatientApp.PatientAddComponent */ "./src/PatientApp/PatientApp.PatientAddComponent.ts");
-/* harmony import */ var _PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PatientApp.Routing */ "./src/PatientApp/PatientApp.Routing.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-/* harmony import */ var _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Security/Security.Interceptor */ "./src/Security/Security.Interceptor.ts");
-
-
-
-
-
-
-
-
-
-
-class PatientModule {
-}
-PatientModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: PatientModule, bootstrap: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]] });
-PatientModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function PatientModule_Factory(t) { return new (t || PatientModule)(); }, providers: [{ provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HTTP_INTERCEPTORS"], useClass: _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__["JwtInterceptor"], multi: true }], imports: [[
-            _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(_PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__["PatientRoutes"])
-        ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](PatientModule, { declarations: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PatientModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
-        args: [{
-                declarations: [
-                    _PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]
-                ],
-                imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(_PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__["PatientRoutes"])
-                ],
-                providers: [{ provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HTTP_INTERCEPTORS"], useClass: _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__["JwtInterceptor"], multi: true }],
-                bootstrap: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]]
-            }]
-    }], null, null); })();
-
-
-/***/ }),
-
-/***/ "./src/PatientApp/PatientApp.PatientAddComponent.ts":
+/***/ "A4MO":
 /*!**********************************************************!*\
   !*** ./src/PatientApp/PatientApp.PatientAddComponent.ts ***!
   \**********************************************************/
@@ -62,11 +10,11 @@ PatientModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInje
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PatientAppComponent", function() { return PatientAppComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _PatientApp_PatientAddModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PatientApp.PatientAddModel */ "./src/PatientApp/PatientApp.PatientAddModel.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _PatientApp_PatientAddModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PatientApp.PatientAddModel */ "Ti8I");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
 
 
 
@@ -107,7 +55,7 @@ class PatientAppComponent {
     }
     Add() {
         //send to webapi!
-        var observable = this.httpobj.post("https://localhost:44334/api/PatientApi", this.Patientobjs);
+        var observable = this.httpobj.post("https://localhost:5001/api/PatientApi", this.Patientobjs);
         observable.subscribe(res => this.Success(res), res => this.Error(res));
     }
     Success(res) {
@@ -182,7 +130,59 @@ PatientAppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
 
 /***/ }),
 
-/***/ "./src/PatientApp/PatientApp.PatientAddModel.ts":
+/***/ "GGri":
+/*!*********************************************!*\
+  !*** ./src/PatientApp/PatientApp.Module.ts ***!
+  \*********************************************/
+/*! exports provided: PatientModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PatientModule", function() { return PatientModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PatientApp.PatientAddComponent */ "A4MO");
+/* harmony import */ var _PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PatientApp.Routing */ "aYtq");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Security/Security.Interceptor */ "MkIR");
+
+
+
+
+
+
+
+
+
+
+class PatientModule {
+}
+PatientModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: PatientModule, bootstrap: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]] });
+PatientModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function PatientModule_Factory(t) { return new (t || PatientModule)(); }, providers: [{ provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HTTP_INTERCEPTORS"], useClass: _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__["JwtInterceptor"], multi: true }], imports: [[
+            _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(_PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__["PatientRoutes"])
+        ]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](PatientModule, { declarations: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PatientModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                declarations: [
+                    _PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]
+                ],
+                imports: [
+                    _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(_PatientApp_Routing__WEBPACK_IMPORTED_MODULE_4__["PatientRoutes"])
+                ],
+                providers: [{ provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HTTP_INTERCEPTORS"], useClass: _Security_Security_Interceptor__WEBPACK_IMPORTED_MODULE_7__["JwtInterceptor"], multi: true }],
+                bootstrap: [_PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_3__["PatientAppComponent"]]
+            }]
+    }], null, null); })();
+
+
+/***/ }),
+
+/***/ "Ti8I":
 /*!******************************************************!*\
   !*** ./src/PatientApp/PatientApp.PatientAddModel.ts ***!
   \******************************************************/
@@ -198,7 +198,7 @@ class Patient {
 
 /***/ }),
 
-/***/ "./src/PatientApp/PatientApp.Routing.ts":
+/***/ "aYtq":
 /*!**********************************************!*\
   !*** ./src/PatientApp/PatientApp.Routing.ts ***!
   \**********************************************/
@@ -208,7 +208,7 @@ class Patient {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PatientRoutes", function() { return PatientRoutes; });
-/* harmony import */ var _PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PatientApp.PatientAddComponent */ "./src/PatientApp/PatientApp.PatientAddComponent.ts");
+/* harmony import */ var _PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PatientApp.PatientAddComponent */ "A4MO");
 
 const PatientRoutes = [
     { path: 'Add', component: _PatientApp_PatientAddComponent__WEBPACK_IMPORTED_MODULE_0__["PatientAppComponent"] },
