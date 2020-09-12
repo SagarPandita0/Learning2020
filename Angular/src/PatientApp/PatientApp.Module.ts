@@ -5,15 +5,19 @@ import { PatientAppComponent } from './PatientApp.PatientAddComponent';
 import {PatientRoutes} from './PatientApp.Routing';
 import {CommonModule} from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import {JwtInterceptor} from '../Security/Security.Interceptor'
+import {JwtInterceptor} from '../Security/Security.Interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     PatientAppComponent
   ],
   imports: [
-    CommonModule,FormsModule,RouterModule.forChild(PatientRoutes)
+    CommonModule,ReactiveFormsModule,FormsModule,RouterModule.forChild(PatientRoutes)
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor,multi:true}],
   bootstrap: [PatientAppComponent]
 })
-export class PatientModule { }
+export class PatientModule { 
+  
+}

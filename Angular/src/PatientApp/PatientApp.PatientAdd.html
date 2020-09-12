@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">  
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text"
+                 class="form-control"
+                 id="pname"
+                 name="name"
+                 [(ngModel)]="Patientobj.name"
+                 formControlName="name">
+                </div>
+                <div *ngIf="isValidInput('name')"
+                  class="alert alert-danger">
+                  <div *ngIf="loginForm.controls['name'].errors.required">
+                    Name is required.
+                  </div>
+                </div>
+        
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text"
+                 class="form-control"
+                 id="phone"
+                 name="Phone"
+                 [(ngModel)]="Patientobj.phone"
+                 formControlName ="phone">
+        </div>
+        <div *ngIf="isValidInput('phone')"
+        class="alert alert-danger">
+        <div *ngIf="loginForm.controls['phone'].errors.required">
+          Phone is required.
+        </div>
+        <div *ngIf="loginForm.controls['phone'].errors.pattern">
+          Must be a valid PhoneNumber format.
+        </div>
+      </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text"
+                 class="form-control"
+                 id="address"
+                 name="address"
+                 [(ngModel)]="Patientobj.address"
+                 formControlName ="address">
+        </div>
+        <div *ngIf="isValidInput('address')"
+        class="alert alert-danger">
+        <div *ngIf="loginForm.controls['address'].errors.required">
+          Address is required.
+        </div>
+      </div>
+
+        <button
+        [disabled]="!loginForm.valid"
+        type="button" 
+        value="Add In Memory" 
+        (click)="AddInMemory()" 
+        id="aim"
+        class="btn btn-warning"
+        >Add in Memory</button>
+
+        <button
+        [disabled]="!loginForm.valid"
+        type="button" 
+        value="Send to WEB API"
+          (click)="Add()" 
+          id="add"
+        class="btn btn-warning"
+        >Send to WEB API</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+  
+  th, td {
+    padding: 10px;
+  }
+  </style>
+<table id="table">
+  <tr>
+    <td>name</td>
+    <td>Phone</td>
+    <td>address</td>
+  </tr>
+  <tr *ngFor="let tempat of Patientobjs" id="tablefor">
+    <td>{{tempat.name}}</td>
+    <td>{{tempat.phone}}</td>
+    <td>{{tempat.address}}</td>
+  </tr>
+</table>
+<br />
