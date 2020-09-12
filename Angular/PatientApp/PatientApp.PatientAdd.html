@@ -1,0 +1,33 @@
+Add Patient
+<br />
+    Enter Name:
+<input type="text" [(ngModel)]="Patientobj.name" name="name"  id="pname" /><br />
+    Enter Phone:
+<input type="text"  [(ngModel)]="Patientobj.phone" name="Phone" id="phone"/><br />
+    Enter Address:
+<input type="text"  [(ngModel)]="Patientobj.address" name="address" id="address"/><br /><br />
+<input type = "button" value="Add In Memory"  (click)="AddInMemory()" id="aim" /><br /><br />
+<input type = "button" value="Send to WEB API"  (click)="Add()" id="add"/>
+<br /><br />
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+  
+  th, td {
+    padding: 10px;
+  }
+  </style>
+<table id="table">
+  <tr>
+    <td>name</td>
+    <td>Phone</td>
+    <td>address</td>
+  </tr>
+  <tr *ngFor="let tempat of Patientobjs" id="tablefor">
+    <td>{{tempat.name}}</td>
+    <td>{{tempat.phone}}</td>
+    <td>{{tempat.address}}</td>
+  </tr>
+</table>
+<br />
